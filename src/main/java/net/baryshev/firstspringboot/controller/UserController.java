@@ -26,8 +26,8 @@ public class UserController {
         return "users";
     }
 
-    @GetMapping("/addNewUser")
-    public String addNewUser(Model model) {
+    @GetMapping("/addForm")
+    public String addForm(Model model) {
         User user = new User();
         model.addAttribute("user", user);
         return "info";
@@ -39,9 +39,9 @@ public class UserController {
         return "redirect:/";
     }
 
-    @GetMapping("/updateInfo")
-    public String updateUser(@RequestParam("userId") Long id, Model model) {
-        User user = userService.getUser(id);
+    @GetMapping("/editForm")
+    public String editForm(@RequestParam("userId") Long id, Model model) {
+        User user = userService.update(id);
         model.addAttribute("user", user);
         return "info";
     }
